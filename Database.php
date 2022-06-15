@@ -6,7 +6,7 @@
     function getAllCategory($idRoot) {
         $conn=getConnection();
         $list = [];
-        $sql = "SELECT * FROM category WHERE id_parent = ".$idRoot;
+        $sql = "SELECT * FROM category WHERE id_parent = ".$idRoot." ORDER BY m_index DESC";
         $statement = $conn->prepare($sql);
         $result = $statement->execute();
     
@@ -64,5 +64,17 @@
             }
         }
         return $check;
+    }
+    function getAllUser() {
+        $conn=getConnection();
+        $list = [];
+        $sql = "SELECT * FROM user";
+        $statement = $conn->prepare($sql);
+        $result = $statement->execute();
+    
+        $list = $statement->fetchAll(\PDO::FETCH_ASSOC);
+    
+        
+        return $list;
     }
 ?>

@@ -1,7 +1,6 @@
 <?php
     session_start();
 
-
     //auto login if has data
     if (!isset($_SESSION['user'])){
         if(isset($_COOKIE['user'])){

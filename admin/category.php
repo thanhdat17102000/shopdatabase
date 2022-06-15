@@ -55,7 +55,8 @@ if (isset($_POST['updateCategory'])){
         </thead>
         <tbody>
             <tr>
-                <input type="hidden" class="form-control" placeholder="Tên danh mục" name="id" value="<?=$categoryEdit['id']?>">
+                <input type="hidden" class="form-control" placeholder="Tên danh mục" name="id"
+                    value="<?=$categoryEdit['id']?>">
                 <td>
                     <div class="form-group">
                         <input type="text" class="form-control" value="<?=$categoryEdit['m_title']?>"
@@ -128,31 +129,45 @@ if (isset($_POST['updateCategory'])){
     </div>
 </form>
 
-<ul class="list-group mt-3 mr-4 h4">
-    <?php foreach ($data as $item) :?>
-    <li class="list-group-item clearfix mb-2 border border-info">
-        <div class="clearfix">
-            <span class="float-left"><?=$item['m_title']?></span>
-            <span class="float-right">
+
+<?php if($data == []){
+    echo "<div class='mt-3'> Chưa có danh mục nào </div>";
+}
+    else { ?>
+
+<table class="table table-bordered  mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($data as $item) :?>
+        <tr>
+            <td><?=$item['id']?></td>
+            <td><?=$item['m_title']?></td>
+            <td>
                 <a href="?action=category&handle=edit&id=<?=$item['id']?>" class="btn btn-primary">Sửa</a>
                 <a href="?action=category&handle=delete&id=<?=$item['id']?>" class="btn btn-danger">Xóa</a>
-            </span>
-        </div>
+            </td>
+        </tr>
         <?php if ($item['subCategory'] != []) :?>
-        <ul class="list-group mt-3 mr-4">
-            <?php foreach ($item['subCategory'] as $itemSub) :?>
-            <li class="list-group-item clearfix mb-2 border border-primary">
-                <div class="clearfix">
-                    <span class="float-left"> -- <?=$itemSub['m_title']?></span>
-                    <span class="float-right">
-                        <a href="?action=category&handle=edit&id=<?=$itemSub['id']?>" class="btn btn-primary">Sửa</a>
-                        <a href="?action=category&handle=delete&id=<?=$itemSub['id']?>" class="btn btn-danger">Xóa</a>
-                    </span>
-                </div>
-            </li>
-            <?php endforeach ?>
-        </ul>
+        <?php foreach ($item['subCategory'] as $itemSub) :?>
+        <tr>
+
+            <td><?=$itemSub['id']?></td>
+            <td> -- <?=$itemSub['m_title']?></td>
+            <td>
+                <a href="?action=category&handle=edit&id=<?=$itemSub['id']?>" class="btn btn-primary">Sửa</a>
+                <a href="?action=category&handle=delete&id=<?=$itemSub['id']?>" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+        <?php endforeach ?>
         <?php endif ?>
-    </li>
-    <?php endforeach ?>
-</ul>
+        <?php endforeach ?>
+    </tbody>
+</table>
+
+<?php } ?>

@@ -2,6 +2,7 @@
     if (isset($_POST['register'])){
         if(isset($_POST['email']) && isset($_POST['password'])  && isset($_POST['fullname'])){
             register($_POST['email'],$_POST['password'],$_POST['fullname']);
+            
         }
     }
     // Đăng nhập
