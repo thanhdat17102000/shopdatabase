@@ -1,5 +1,7 @@
 <?php
-    isset($_GET['action']) ? $action = $_GET['action'] : $action ='category';
+    session_start();
+    require_once "../Database.php";
+    isset($_GET['action']) ? $action = $_GET['action'] : $action ='index';
     $action = (string)$action;
 ?>
 <!DOCTYPE html>
