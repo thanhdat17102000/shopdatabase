@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-User
-=======
 <?php
     $dataUser=getAllUser();
 ?>
@@ -34,4 +31,3 @@ User
         <?php endforeach ?>
     </tbody>
 </table>
->>>>>>> c85b69f351e1ec72f98e303f78db67b5d0ccb3e2

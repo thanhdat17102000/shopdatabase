@@ -42,6 +42,7 @@
                 echo "Sorry, your file was not uploaded.";
             // if everything is ok, try to upload file
             } else {
+                
                 $target_file = $target_dir . $id . '.' . $imageFileType;
                 if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                     echo $id . '.' . $imageFileType;

@@ -20,10 +20,7 @@
                 color : black;
             }
         </style>
-<<<<<<< HEAD
-=======
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
->>>>>>> c85b69f351e1ec72f98e303f78db67b5d0ccb3e2
     <link rel="stylesheet" href="<?=$action?>.css">
 </head>
 
