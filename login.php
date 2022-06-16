@@ -1,4 +1,10 @@
 <?php
+    // Check user đăng nhập hay chưa
+
+    if(isset($_SESSION['user'])){
+        header("Location: index.php");
+    }
+
     if (isset($_POST['register'])){
         if(isset($_POST['email']) && isset($_POST['password'])  && isset($_POST['fullname'])){
             register($_POST['email'],$_POST['password'],$_POST['fullname']);

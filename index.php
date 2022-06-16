@@ -7,7 +7,7 @@
             $_SESSION['user'] = json_decode($_COOKIE['user'], true);
         }
     }
-
+    
     require_once "Database.php";
     isset($_GET['action']) ? $action = $_GET['action'] : $action ='home';
     $action = (string)$action;
@@ -22,6 +22,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
     a {
         text-decoration: none;
@@ -33,13 +34,19 @@
 
 <body>
     <header class="clearfix text-white bg-info pt-3 pb-3">
-        <div class="float-left ml-3"></div>
+        <div class="float-left ml-3"><a href="index.php" class="btn btn-info"> <i class="fa-solid fa-house"></i> Trang
+                chủ</a></div>
         <div class="float-right mr-3">
+            <?php if(isset($_SESSION['user'])) {?>
+            Xin chào <span class="text-white"><?=$_SESSION['user']['m_name']?></span>
+            <a href="?action=logout">Đăng xuất</a>
+            <?php } else { ?>
             <a href="?action=login">Đăng ký/Đăng nhập</a>
+            <?php } ?>
         </div>
     </header>
-    <main> 
-            <?php
+    <main>
+        <?php
                     require_once $action.".php";
             ?>
     </main>

@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(!isset($_SESSION['user']) || $_SESSION['user']['m_role'] !== "admin" ) {
+            header("Location: ../index.php");
+    }
     require_once "../Database.php";
     isset($_GET['action']) ? $action = $_GET['action'] : $action ='category';
     $action = (string)$action;
@@ -27,8 +30,8 @@
 <body>
 
     <header class="clearfix pt-3 pb-3 mb-3 border bg-info text-white mr-3 ml-3 ">
-        <div class="logo float-left ml-2">Thành Đạt</div>
-        <div class="account float-right mr-2">Đây là trang acount</div>
+        <div class="logo float-left ml-2">Trang quản trị</div>
+        <div class="account float-right mr-2"></div>
     </header>
     <main class="ml-3">
         <div class="row">

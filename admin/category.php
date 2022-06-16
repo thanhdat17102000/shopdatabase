@@ -68,8 +68,7 @@ if (isset($_POST['updateCategory'])){
                         <select class="form-control" id="sel1" name="idParent">
                             <option value="0">Thư mục gốc</option>
                             <?php foreach ($data as $item) : ?>
-                            <option value="<?=$item['id']?>"
-                                <?=$item['id']==$categoryEdit['id_parent'] ? "selected" : ""?>> <?=$item['m_title']?>
+                            <option value="<?=$item['id']?>" <?=$item['id']==$categoryEdit['id_parent'] ? "selected" : ""?>> <?=$item['m_title']?>
                             </option>
                             <?php endforeach ?>
                         </select>
