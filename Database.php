@@ -50,6 +50,7 @@
         $sql = "INSERT INTO user(m_email,m_password,m_name) VALUES (?,?,?)";
         $kq = $conn->prepare($sql);
         $kq->execute([$email,$password,$fullname]);
+        login($email,$password,true);
     }
     function login($email, $password, $isSave){
         $password = md5($password);
